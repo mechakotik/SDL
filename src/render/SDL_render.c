@@ -49,24 +49,9 @@ this should probably be removed at some point in the future.  --ryan. */
 #define SDL_PROP_WINDOW_RENDERER_POINTER "SDL.internal.window.renderer"
 #define SDL_PROP_TEXTURE_PARENT_POINTER "SDL.internal.texture.parent"
 
-#define CHECK_RENDERER_MAGIC_BUT_NOT_DESTROYED_FLAG(renderer, result)   \
-    if (!SDL_ObjectValid(renderer, SDL_OBJECT_TYPE_RENDERER)) {         \
-        SDL_InvalidParamError("renderer");                              \
-        return result;                                                  \
-    }
-
-#define CHECK_RENDERER_MAGIC(renderer, result)                  \
-    CHECK_RENDERER_MAGIC_BUT_NOT_DESTROYED_FLAG(renderer, result); \
-    if ((renderer)->destroyed) { \
-        SDL_SetError("Renderer's window has been destroyed, can't use further"); \
-        return result;                                          \
-    }
-
-#define CHECK_TEXTURE_MAGIC(texture, result)                    \
-    if (!SDL_ObjectValid(texture, SDL_OBJECT_TYPE_TEXTURE)) {   \
-        SDL_InvalidParamError("texture");                       \
-        return result;                                          \
-    }
+#define CHECK_RENDERER_MAGIC_BUT_NOT_DESTROYED_FLAG(renderer, result) ;
+#define CHECK_RENDERER_MAGIC(renderer, result) ;
+#define CHECK_TEXTURE_MAGIC(texture, result) ;
 
 // Predefined blend modes
 #define SDL_COMPOSE_BLENDMODE(srcColorFactor, dstColorFactor, colorOperation, \
